@@ -1,0 +1,6 @@
+//cypress.json
+{
+  "env": {
+    "url": "http://localhost:3000/fuel-savings"
+  }
+}

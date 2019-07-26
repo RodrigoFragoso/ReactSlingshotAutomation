@@ -1,17 +1,17 @@
 describe('Form Month - Fuel Savings Analysis', function() {
   before('Acessa a pagina fuel-savings', function() {
-    cy.visit('http://localhost:3000/fuel-savings')
+    cy.visit(Cypress.env('hostStaging'))
   })
 
   it('Verifica se existe o titulo', function(){
     cy.get('h2').should('contain','Fuel Savings Analysis')
   })
 
-    let newMpg = '500.00'
-    let tradeMpg = '27.00'
-    let newPpg = '45.00'
-    let tradePpg = '155.00'
-    let milesDriven = '900.00'
+    let newMpg = (Cypress.env('caseTestValues')['newMpg'])
+    let tradeMpg = (Cypress.env('caseTestValues')['tradeMpg'])
+    let newPpg = (Cypress.env('caseTestValues')['newPpg'])
+    let tradePpg = (Cypress.env('caseTestValues')['tradePpg'])
+    let milesDriven = (Cypress.env('caseTestValues')['milesDriven'])
 
   it('Preenche informações', function() {
     cy

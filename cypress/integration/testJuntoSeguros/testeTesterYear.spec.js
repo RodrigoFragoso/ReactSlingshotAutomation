@@ -1,17 +1,17 @@
 describe('Form Year - Fuel Savings Analysis', function() {
   before('Acessa a pagina fuel-savings', function() {
-    cy.visit('http://localhost:3000/fuel-savings')
+    cy.visit(Cypress.env('hostStaging'))
   })
 
   it('Verifica se existe o titulo', function(){
     cy.get('h2').should('contain','Fuel Savings Analysis')
   })
 
-    let newMpg = '300.00'
-    let tradeMpg = '20.00'
-    let newPpg = '70.00'
-    let tradePpg = '300.00'
-    let milesDriven = '800.00'
+  let newMpg = (Cypress.env('caseTestValues')['newMpg'])
+  let tradeMpg = (Cypress.env('caseTestValues')['tradeMpg'])
+  let newPpg = (Cypress.env('caseTestValues')['newPpg'])
+  let tradePpg = (Cypress.env('caseTestValues')['tradePpg'])
+  let milesDriven = (Cypress.env('caseTestValues')['milesDriven'])
 
   it('Preenche informações', function() {
     cy
@@ -32,9 +32,9 @@ describe('Form Year - Fuel Savings Analysis', function() {
   })
 
   it('Verifica os resultados fixos', function(){
-    let resultMonthlyFixed = '$984.44'
-    let resultOneYearFixed = '$11,813.28'
-    let resultThreeYearFixed = '$35,439.84'
+    let resultMonthlyFixed = '$423.81'
+    let resultOneYearFixed = '$5,085.72'
+    let resultThreeYearFixed = '$15,257.16'
     cy
       .get('td.savings').should('contain', resultMonthlyFixed)
       .get('td.savings').should('contain', resultOneYearFixed)
